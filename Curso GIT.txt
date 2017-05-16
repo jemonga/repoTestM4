@@ -1,0 +1,29 @@
+﻿GIT
+
+3 estados: 
+	Untracked - Estado inicial sin información
+	Sin modificar - 
+	Modificado - El fichero ha sufrido cambios desde el último check-out
+	Staged - Modificado marcado para ser añadido en el próximo commit
+
+Áreas de un proyecto git
+	Directorio git
+	Carpeta de trabajo
+	Staging area
+
+git config --global user.name "jesusmg"
+git config --global user.email "jesusmg@meta4.com"
+git config --global --list
+
+Crear un repositorio git (por línea de comandos)
+	mkdir repo
+	cd repo
+	git init
+	git status
+	git log
+
+	git add nombreFichero
+	git add . ----> nos mete todos los ficheros pendientes para ser commiteados, pero sin meterlos al repositorio
+	git commit -m "mensaje del commit: add readme.md"
+	git commit -a -m "mensaje del commit" --> hace commit de todos los pendientes
+	
