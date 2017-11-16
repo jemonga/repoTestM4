@@ -14,7 +14,7 @@ pipeline {
 			   script {
 				  env.JAVA_HOME="${tool 'jdk8'}"
 				  env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-			   	  input "Continue?"
+exit 1 //			   	  input "Continue?"
 				  if (isUnix()) {
 					 sh "'${env.mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
 				  } else {
