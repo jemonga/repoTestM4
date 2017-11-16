@@ -34,7 +34,7 @@ exit 1
     }
    post {
 	   always {
-		   echo "Hemos terminado!"
+		   echo "Hemos tardado ${currentBuild.durationString}"
 	   }
 	   failure {
 		mail to: 'jesusmg@meta4.com',
