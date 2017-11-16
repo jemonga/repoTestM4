@@ -1,8 +1,6 @@
 pipeline {
     agent any
-
     stages {
-
 	   stage('Preparation') {
 		   steps {
 			   script {
@@ -16,9 +14,7 @@ pipeline {
 			   script {
 				  env.JAVA_HOME="${tool 'jdk8'}"
 				  env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-				   
-				   input "Continue?"
-				   
+			   	  input "Continue?"
 				  if (isUnix()) {
 					 sh "'${env.mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
 				  } else {
@@ -33,6 +29,11 @@ pipeline {
 				  junit '**/target/surefire-reports/TEST-*.xml'
 				  archive 'target/*.jar'
 			   }
+		   }
+	   }
+	   post {
+		   always {
+			   echo "Hemos terminado!"
 		   }
 	   }
     }
