@@ -4,8 +4,10 @@ pipeline {
     stages {
 
 	   stage('Preparation') {
-		  git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-		  env.mvnHome = tool 'miMaven'
+		   steps {
+		  	git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+		  	env.mvnHome = tool 'miMaven'
+		   }
 	   }
 	   stage('Build') {
 		  env.JAVA_HOME="${tool 'jdk8'}"
