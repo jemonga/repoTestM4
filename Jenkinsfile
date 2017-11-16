@@ -31,20 +31,20 @@ exit 1
 			   }
 		   }
 	   }
-	   post {
-		   always {
-			   echo "Hemos terminado!"
-		   }
-		   failure {
-			mail to: 'jesusmg@meta4.com',
-			subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-			body: "Something is wrong with ${env.BUILD_URL}"
-		   }
-		   changed {
-			mail to: 'jesusmg@meta4.com',
-			subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-			body: "Something has changed with ${env.BUILD_URL}"
-		   }
-	   }
     }
+   post {
+	   always {
+		   echo "Hemos terminado!"
+	   }
+	   failure {
+		mail to: 'jesusmg@meta4.com',
+		subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+		body: "Something is wrong with ${env.BUILD_URL}"
+	   }
+	   changed {
+		mail to: 'jesusmg@meta4.com',
+		subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+		body: "Something has changed with ${env.BUILD_URL}"
+	   }
+   }
 }
