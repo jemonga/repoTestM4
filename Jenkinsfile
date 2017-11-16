@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    def mvnHome
+
     stages {
 
 	   stage('Preparation') { // for display purposes
@@ -9,16 +9,16 @@ pipeline {
 		  // Get the Maven tool.
 		  // ** NOTE: This 'M3' Maven tool must be configured
 		  // **       in the global configuration.           
-		  mvnHome = tool 'miMaven'
+		  env.mvnHome = tool 'miMaven'
 	   }
 	   stage('Build') {
 		  // Run the maven build
 		  env.JAVA_HOME="${tool 'jdk8'}"
 		  env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
 		  if (isUnix()) {
-			 sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+			 sh "'${env.mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
 		  } else {
-			 bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+			 bat(/"${env.mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
 		  }
 	   }
 	   stage('Results') {
