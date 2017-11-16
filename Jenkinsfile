@@ -14,12 +14,13 @@ pipeline {
 			   script {
 				  env.JAVA_HOME="${tool 'jdk8'}"
 				  env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-
+/*
 				  if (isUnix()) {
 					 sh "'${env.mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
 				  } else {
 					 bat(/"${env.mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
 				  }
+*/
 			   }
 		   }
 	   }
