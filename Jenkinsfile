@@ -38,11 +38,13 @@ pipeline {
 		   echo "Hemos tardado ${currentBuild.durationString}"
 	   }
 	   failure {
+		echo "Algo ha fallado"
 		mail to: 'jesusmg@meta4.com',
 		subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
 		body: "Something is wrong with ${env.BUILD_URL}"
 	   }
 	   changed {
+		echo "Algo ha cambiado"
 		mail to: 'jesusmg@meta4.com',
 		subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
 		body: "Something has changed with ${env.BUILD_URL}"
